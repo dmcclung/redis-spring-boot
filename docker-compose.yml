@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379"
+    networks:
+      - dev    
+
+  redis-spring-boot:
+    image: dmcclung/redis-spring-boot    
+    container_name: redis-spring-boot
+    depends_on: 
+        - redis
+    ports:
+      - "8080:8080"
+    networks:
+      - dev      
+      
+networks:
+    dev:
